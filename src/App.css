@@ -1,38 +1,40 @@
-.App {
-  text-align: center;
+
+@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap');
+
+
+body {
+    background: #fbdcff !important;
+    /* background: linear-gradient(93deg, rgba(251,220,255,1) 2%, rgba(244,125,254,1) 100%); */
+    color: #333333 ;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+
+.logoFont {
+  font-family: "Source Code Pro", monospace;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.nav-color {
+    background-color: #6b4971 !important;
+}
+
+.btn-color {
+    background-color:  #b256b1 !important;
+}
+
+.product-img {
+    height: 500px; /* Set a fixed height for the images */
+    width: 75%;   /* Allow the width to fill the container */
+    object-fit: cover; /* Ensure the image covers the entire container, preserving aspect ratio */
   }
+
+.h-500 {
+    height: 500px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.cart-btn {
+    width: 135px !important;
 }
