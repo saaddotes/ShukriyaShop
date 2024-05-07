@@ -6,9 +6,12 @@ import './App.css';
 import Footer from './Footer.js'
 // import  { Routes, Route} from 'react-router-dom';
 import ProductDetails from './ProductDetails.js';
+import Cart from './Cart.js';
 
 function App() {
   const [filteredProducts, setFilteredProducts] = useState([]);
+  const [cartItems , setCartItems] = useState([])
+  let myCategory = "All Products:"
 
   useEffect(() => {
     fetchAllProducts();
@@ -53,10 +56,11 @@ function App() {
   return (
     <Router>
       <>
-        <Navigation onSelectCategory={onSelectCategory} onSearchProduct={onSearchProduct} />
+        <Navigation onSelectCategory={onSelectCategory} onSearchProduct={onSearchProduct} cartItems={cartItems}/>
         <Routes>
-          <Route path='/' element={<ProductsTray filteredProducts={filteredProducts} />} />
-          <Route path='/productdetails' element={<ProductDetails />} />
+          <Route path='/' element={<ProductsTray filteredProducts={filteredProducts} category={myCategory}/>} />
+          <Route path='/productdetails' element={<ProductDetails cartItems={cartItems} setCartItems={setCartItems} /> } />
+          <Route path='/cart' element={<Cart />}/>
         </Routes>
         {/* <ProductsTray filteredProducts={filteredProducts} /> */}
         {/* <Container>

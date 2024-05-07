@@ -3,13 +3,13 @@ import './ProductCard.css';
 import * as Icon from 'react-bootstrap-icons';
 import { useNavigate } from 'react-router-dom';
 
-function ProductCard({ id, title, description, thumbnail, rating, stock }) {
+function ProductCard({ id, title, description, thumbnail, rating, stock , price, discount}) {
   const navigate = useNavigate();
   function toProductDetails(event) {
     const productId = event.currentTarget.getAttribute('data-id');
     console.log(productId);
     console.log(title)
-    navigate("/ProductDetails", { state: { productId: productId, title: title, description: description, rating: rating, stock: stock } });
+    navigate("/ProductDetails", { state: { productId: productId, title: title, description: description, rating: rating, stock: stock , price:price , discount:discount} });
   }
 
   return (
@@ -22,8 +22,7 @@ function ProductCard({ id, title, description, thumbnail, rating, stock }) {
           </Card.Body>
           <div className='card-footer bg-dark d-flex justify-content-between'>
             <div className='rating'>{renderStars(rating)}</div>
-            <div className='text-white'>Stock : {stock}</div>
-            {/* <button onClick={toProductDetails} className='btn btn-dark' data-id={id}>{id}</button> */}
+            <div className='text-white'>{price}$</div>
           </div>
         </Card>
       </a>

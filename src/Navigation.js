@@ -1,9 +1,16 @@
 import { useEffect, useState } from 'react';
 import * as Icon from 'react-bootstrap-icons';
+import Badge from 'react-bootstrap/Badge';
+import Cart from './Cart';
+import { useNavigate } from 'react-router-dom';
 
 
-function Navigation({ onSelectCategory, onSearchProduct }) {
+
+
+function Navigation({ onSelectCategory, onSearchProduct , cartItems }) {
   const [categories, setCategories] = useState([]);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch('https://dummyjson.com/products/categories')
@@ -22,6 +29,11 @@ function Navigation({ onSelectCategory, onSearchProduct }) {
   function handleSearch(event) {
     const query = event.target.value;
     onSearchProduct(query);
+  }
+
+  function checkCart() {
+    navigate("/cart", { state: {cartItems: cartItems}});
+    console.log(cartItems);
   }
 
   return (
@@ -46,8 +58,7 @@ function Navigation({ onSelectCategory, onSearchProduct }) {
             </li>
           </ul>
           <input onChange={handleSearch} className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-          <button className='btn btn-color cart-btn'><a className="nav-link text-white btn-color d-flex gap-2 align-items-center" href="#">Cart<Icon.Cart className="text-warning" /></a></button>
-
+          <button onClick={checkCart} className='btn btn-color cart-btn'><a className="nav-link text-white btn-color d-flex gap-2 align-items-center" >Cart<Icon.Cart className="text-warning" /> <Badge bg="primary">{cartItems.length}</Badge></a></button>
         </div>
       </div>
     </nav>
